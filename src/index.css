@@ -1,68 +1,174 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* Reset básico */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root, .app-container {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Container split-screen */
+.container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Cada coluna */
+.column {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Scroll individual */
+  height: 100vh;    /* Garante scroll dentro da tela */
+  box-sizing: border-box;
 }
 
-button {
+/* Temas */
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --pane-bg: #ffffff;
+  --primary-color: #0077ff;
+  --secondary-color: #555;
+  --box-bg: #f0f0f0;
+  --box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+  --bg-color: #1c1c1c;
+  --text-color: #eee;
+  --pane-bg: #2b2b2b;
+  --primary-color: #4aa3ff;
+  --secondary-color: #aaa;
+  --box-bg: #333;
+  --box-shadow: rgba(0, 0, 0, 0.5);
+}
+
+.left-pane {
+  background-color: var(--bg-color);
+}
+
+.right-pane {
+  background-color: var(--pane-bg);
+}
+
+/* FormSection */
+.section-content h1 {
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.form-field label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--secondary-color);
+}
+
+.form-field input,
+.form-field textarea {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: 0.3s;
+  background-color: var(--pane-bg);
+  color: var(--text-color);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 119, 255, 0.3);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* PreviewSection */
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  color: var(--text-color);
+}
+
+.preview-header {
+  background-color: var(--box-bg);
+  padding: 16px;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  box-shadow: 0 0 10px var(--box-shadow);
+  border-bottom: 2px solid var(--primary-color);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.preview-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
 }
+
+.preview-header p {
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.preview-section {
+  background-color: var(--box-bg);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--box-shadow);
+}
+
+.preview-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.preview-section p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Botão modo noturno */
+.toggle-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  z-index: 1000;
+}
+
+.toggle-btn:hover {
+  background-color: #005fcc;
+}
+.preview-section p {
+  font-size: 1rem;
+  line-height: 1.5;
+  word-wrap: break-word; /* Quebra palavras grandes */
+  white-space: pre-wrap; /* Mantém quebras de linha do textarea */
+  overflow-wrap: break-word; /* Para navegadores antigos */
+}
+
+
+
+
