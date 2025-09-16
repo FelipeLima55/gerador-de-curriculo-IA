@@ -18,11 +18,10 @@ export interface Skill {
 export interface Experience {
     id: string;
     company: string;
-    position: string;
+    role: string;
     startDate: string;
-    endDate: string;
-    isCurrentJob: boolean;
-    description: string;
+    endDate?: string;
+    description?: string;
 }
 
 //Tipo principal do CV
@@ -57,3 +56,5 @@ export interface ValidationResult {
     isValid: boolean;
     errors: ValidationError
 }
+
+
